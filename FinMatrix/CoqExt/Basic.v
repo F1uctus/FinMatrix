@@ -31,7 +31,7 @@ Require Export Coq.Setoids.Setoid.        (*  *)
 Require Export Coq.Classes.Morphisms.     (* respectful, ==> *)
 Require Export Coq.Classes.SetoidTactics. (* add_morphism_tactic *)
 Require Export Coq.Relations.Relations.   (* equivalence *)
-Require Export Coq.Bool.Sumbool.          (* sumbool_not *)
+Require Export Coq.Init.Sumbool.          (* sumbool_not *)
 Require Export Coq.Bool.Bool.             (* reflect *)
 Require Export ExtrOcamlBasic ExtrOcamlNatInt MyExtrOCamlR.
 Require Export LogicExt BoolExt StrExt.
@@ -143,10 +143,10 @@ Reserved Notation "M &[ i ]"
    Maybe it is a convention problem, we choose 1. *)
 
 (* keep same with "p .1" in Coq/ssr/ssrfun.v *)
-Reserved Notation "V .1"       (at level 2, left associativity, format "V .1"). (* v[1] *)
-Reserved Notation "V .2"       (at level 2, left associativity, format "V .2").
-Reserved Notation "V .3"       (at level 2, left associativity, format "V .3").
-Reserved Notation "V .4"       (at level 2, left associativity, format "V .4").
+Reserved Notation "V .1"       (at level 1, left associativity, format "V .1"). (* v[1] *)
+Reserved Notation "V .2"       (at level 1, left associativity, format "V .2").
+Reserved Notation "V .3"       (at level 1, left associativity, format "V .3").
+Reserved Notation "V .4"       (at level 1, left associativity, format "V .4").
 
 (* For 2-/3-/4-D vector *)
 (* Reserved Notation "V .x"       (at level 25, format "V .x").      (* v[1] *) *)

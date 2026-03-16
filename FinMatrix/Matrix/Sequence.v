@@ -462,7 +462,7 @@ Section seqsum_seqprod.
       rewrite !seqprodS_tail. sring.
       bdestruct (j =? n).
       - subst.
-        rewrite Nat.eqb_refl. pose aringMulAMonoid. amonoid.
+        rewrite Nat.eqb_refl. pose proof sringMulM. amonoid.
         rewrite commutative. f_equal.
         apply seqprod_eq; intros.
         bdestruct (i =? n); auto; lia.

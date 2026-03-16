@@ -15,6 +15,7 @@
  *)
 
 Require Export RExtBase RExtPlus RExtMult RExtSqr RExtOpp RExtInv RExtSqrt RExtBool.
+Require Import Znat.
 
 
 (* ======================================================================= *)

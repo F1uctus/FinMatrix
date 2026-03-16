@@ -1948,7 +1948,7 @@ End Theory.
 
 (** This example declares an abstract abelian-ring structure, and shows how to use
     fewer code to enable "ring" tactic. *)
-Module Demo_AbsARing.
+Section Demo_AbsARing.
   Context `{HARing : ARing}.
   Infix "+" := Aadd. Infix "*" := Amul.
   Notation "0" := Azero. Notation "1" := Aone.
