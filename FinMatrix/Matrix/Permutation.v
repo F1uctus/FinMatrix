@@ -185,7 +185,7 @@ Module Export method3.
 
     (** |perm1 (a::l)| = S |l| *)
     Lemma perm1_length : forall a (l : list tA), length (perm1 a l) = S (length l).
-    Proof. induction l; simpl; auto. rewrite map_length. auto. Qed.
+    Proof. induction l; simpl; auto. rewrite length_map. auto. Qed.
 
     (** perm1 a l <> [] *)
     Lemma perm1_not_nil : forall a (l : list tA), perm1 a l <> [].
@@ -239,7 +239,7 @@ Module Export method3.
       destruct l; intros; auto.
       unfold perm; fold (perm (t :: l)).
       rewrite in_concat_length with (n:=S (length (t::l))).
-      - rewrite map_length. auto.
+      - rewrite length_map. auto.
       - intros. remember (a :: l) as d.
         apply in_map_iff in H. destruct H as [x [H H1]].
         apply in_perm_length in H1. rewrite <- H. rewrite perm1_length. auto.
@@ -300,7 +300,7 @@ Module Export method3.
     Proof.
       intros. apply in_perm with (x:=nth i a 0) in H.
       - apply in_seq in H. lia.
-      - apply nth_In. apply in_perm_length in H. rewrite seq_length in H. lia.
+      - apply nth_In. apply in_perm_length in H. rewrite length_seq in H. lia.
     Qed.
 
   End perm_index.

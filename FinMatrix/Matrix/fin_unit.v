@@ -28,8 +28,8 @@ Infix "?<" := (lt_ge_dec) (at level 30).
 
 
 #[export] Hint Rewrite
-  map_length
-  seq_length
+  length_map
+  length_seq
   : fin.
 
 

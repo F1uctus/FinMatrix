@@ -64,8 +64,8 @@ Require Export NatExt.
 Require Import Extraction.
 
 (* #[export] Hint Rewrite *)
-(*   map_length *)
-(*   seq_length *)
+(*   length_map *)
+(*   length_seq *)
 (*   : fin. *)
 
 
@@ -763,7 +763,7 @@ Section finseq.
     end.
 
   Lemma finseq_length : forall n, length (finseq n) = n.
-  Proof. destruct n; simpl; auto. rewrite map_length, seq_length. auto. Qed.
+  Proof. destruct n; simpl; auto. rewrite length_map, length_seq. auto. Qed.
     
   Lemma finseq_eq_seq : forall n, map fin2nat (finseq n) = seq 0 n.
   Proof.
@@ -809,7 +809,7 @@ Section finseqb.
     map nat2finS (seq lo cnt).
 
   Lemma finseqb_length : forall n lo cnt, length (finseqb n lo cnt) = cnt.
-  Proof. intros. unfold finseqb. rewrite map_length, seq_length. auto. Qed.
+  Proof. intros. unfold finseqb. rewrite length_map, length_seq. auto. Qed.
 
   Lemma finseqb_eq_seq : forall n lo cnt,
       lo + cnt <= S n -> map fin2nat (finseqb n lo cnt) = seq lo cnt.

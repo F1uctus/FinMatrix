@@ -43,7 +43,7 @@ Generalizable Variables tA tB tC Aadd Azero Aopp Amul Aone Ainv.
 Notation dlist tA := (list (list tA)).
 
 Hint Resolve
-  repeat_length seq_length map_length
+  repeat_length length_seq length_map
   : mat.
 
 
@@ -965,7 +965,7 @@ Section f2l_l2f.
 
   Lemma f2l_length : forall n f, length (f2l n f) = n.
   Proof.
-    intros. unfold f2l. rewrite map_length. apply seq_length.
+    intros. unfold f2l. rewrite length_map. apply length_seq.
   Qed.
 
   (** (f2l f)[i] = f i *)
@@ -1129,7 +1129,7 @@ Section lcmul_lmulc.
   
   (** cmul keep its length *)
   Lemma lcmul_length : forall a l n, length l = n -> length (lcmul a l) = n.
-  Proof. intros. unfold lcmul. rewrite map_length; auto. Qed.
+  Proof. intros. unfold lcmul. rewrite length_map; auto. Qed.
   
   (** a * l = l * a *)
   Lemma lmulc_lcmul : forall a l, lmulc l a = lcmul a l.
@@ -1849,7 +1849,7 @@ Section f2dl_dl2f.
 
   Lemma f2dl_length : forall r c f, length (f2dl r c f) = r.
   Proof.
-    intros. unfold f2dl. rewrite map_length. apply seq_length.
+    intros. unfold f2dl. rewrite length_map. apply length_seq.
   Qed.
 
   Lemma f2dl_width : forall r c f, width (f2dl r c f) c.
@@ -2535,8 +2535,8 @@ Section dmap_A_B.
       width dl n <-> width (dmap dl) n.
   Proof.
     unfold width; induction dl; intros; split; intros; simpl in *; try easy.
-    - inv H. constructor. apply map_length. apply IHdl. auto.
-    - inv H. constructor. rewrite map_length. auto.
+    - inv H. constructor. apply length_map. apply IHdl. auto.
+    - inv H. constructor. rewrite length_map. auto.
       apply IHdl. auto.
   Qed.
   

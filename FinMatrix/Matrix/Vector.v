@@ -333,7 +333,7 @@ Section l2v_v2l.
   
   (** length (v2l a) = n *)
   Lemma v2l_length : forall {n} (a : vec n), length (v2l a) = n.
-  Proof. intros. unfold v2l. rewrite map_length, finseq_length. auto. Qed.
+  Proof. intros. unfold v2l. rewrite length_map, finseq_length. auto. Qed.
 
   (** v2l a = v2l b -> a = b *)
   Lemma v2l_inj : forall {n} (a b : vec n), v2l a = v2l b -> a = b.

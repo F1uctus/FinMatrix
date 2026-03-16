@@ -146,7 +146,7 @@ Section l2m_m2l.
     l2v (vzero Azero) (map (l2v Azero) d).
 
   Lemma m2l_length : forall {r c} (M : mat tA r c), length (m2l M) = r.
-  Proof. intros. unfold m2l. rewrite map_length. rewrite v2l_length; auto. Qed.
+  Proof. intros. unfold m2l. rewrite length_map. rewrite v2l_length; auto. Qed.
 
   Lemma m2l_width : forall {r c} (M : mat tA r c), width (m2l M) c.
   Proof.
@@ -188,7 +188,7 @@ Section l2m_m2l.
       length d2 = r -> width d2 c ->
       @l2m r c d1 = @l2m r c d2 -> d1 = d2.
   Proof.
-    intros. unfold l2m in H3. apply l2v_inj in H3; try rewrite map_length; auto.
+    intros. unfold l2m in H3. apply l2v_inj in H3; try rewrite length_map; auto.
     apply map_inj in H3; auto.
     intros. apply l2v_inj in H6; auto.
     apply (width_imply_in_length a d1); auto.
@@ -206,7 +206,7 @@ Section l2m_m2l.
       + rewrite l2v_v2l.
         rewrite nth_v2l with (E:=fin2nat_lt _); fin.
       + apply v2l_length.
-    - rewrite map_length. apply v2l_length.
+    - rewrite length_map. apply v2l_length.
   Qed.
 
   Lemma m2l_l2m : forall {r c} (d : dlist tA),
@@ -215,7 +215,7 @@ Section l2m_m2l.
     intros. unfold l2m,m2l; simpl. rewrite v2l_l2v.
     - rewrite map_map. apply map_id_In; intros. apply v2l_l2v.
       apply (width_imply_in_length a d); auto.
-    - rewrite map_length; auto.
+    - rewrite length_map; auto.
   Qed.
   
   Lemma l2m_surj : forall {r c} (M : mat tA r c), (exists d, @l2m r c d = M).
@@ -479,7 +479,7 @@ Section rvl2m_m2rvl.
     intros. unfold m2rvl, rvl2m.
     apply (list_eq_ext (vzero Azero) r); auto.
     - intros. rewrite nth_map_finseq with (E:=H0). f_equal.
-    - rewrite map_length, finseq_length. auto.
+    - rewrite length_map, finseq_length. auto.
   Qed.
   
   Lemma rvl2m_m2rvl : forall {r c} (M : mat r c), rvl2m (m2rvl M) = M.
@@ -509,7 +509,7 @@ Section cvl2m_m2cvl.
     apply (list_eq_ext (vzero Azero) c); auto.
     - intros. rewrite nth_map_finseq with (E:=H0).
       apply veq_iff_vnth; intros j. f_equal.
-    - rewrite map_length, finseq_length. auto.
+    - rewrite length_map, finseq_length. auto.
   Qed.
   
   Lemma cvl2m_m2cvl : forall {r c} (M : mat r c), cvl2m (m2cvl M) = M.
